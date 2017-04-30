@@ -3,7 +3,8 @@
     package="spaceapps.alvaro.caringfornature">
 
     <application android:icon="@mipmap/ic_launcher">
-        <uses-permission android:name="android.permission.INTERNET"/>
+        <uses-permission android:name="android.permission.INTERNET" />
+
         <activity
             android:name=".SplashScreen"
             android:theme="@style/SplashTheme">
@@ -19,12 +20,17 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:theme="@style/Theme.AppCompat.Light"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="spaceapps.alvaro.caringfornature.MainActivity" />
         </activity>
+        <activity android:name=".IntroApp"
+            android:parentActivityName=".SplashScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+            </activity>
     </application>
 
 </manifest>

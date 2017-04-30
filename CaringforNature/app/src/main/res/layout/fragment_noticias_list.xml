@@ -10,6 +10,7 @@
         android:id="@+id/padre_toolbar"
         layout="@layout/toolbar_noticias"
        />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"
         android:name="spaceapps.alvaro.caringfornature.Fragmentos.NoticiasFragment"

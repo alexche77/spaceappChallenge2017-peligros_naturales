@@ -10,8 +10,38 @@
         android:id="@+id/padre_toolbar_desastres"
         layout="@layout/toolbar_desastres"
         />
+    <LinearLayout
+        android:id="@+id/noMessages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+        <net.bohush.geometricprogressview.GeometricProgressView
+            android:id="@+id/progressView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:gp_type="triangle"
+            app:gp_number_of_angles="7"
+            app:gp_color="@color/colorAccent"
+            app:gp_duration="800"
+            app:gp_figure_padding="3dp" />
+
+        <TextView
+            android:id="@+id/noMessagesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:text="Trayendo datos desde la NASA"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+    </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"
+        android:visibility="gone"
         android:name="spaceapps.alvaro.caringfornature.Fragmentos.DesastresFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

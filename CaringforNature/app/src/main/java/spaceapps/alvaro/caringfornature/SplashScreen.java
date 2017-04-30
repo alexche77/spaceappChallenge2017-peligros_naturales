@@ -18,7 +18,7 @@ public class SplashScreen extends AppCompatActivity {
         EasySplashScreen config = new EasySplashScreen(this)
                 .withFullScreen()
                 .withTargetActivity(MainActivity.class)
-                .withSplashTimeOut(2500)
+                .withSplashTimeOut(1000)
                 .withBackgroundColor(Color.WHITE)
                 .withAfterLogoText("SpaceAppsChallenge 2017")
                 .withLogo(R.drawable.logo_app);

@@ -25,6 +25,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'com.github.paolorotolo:appintro:4.1.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'me.riddhimanadib.bottom-nav-bar:bottom-nav-bar:1.0.1'
     compile 'gr.pantrif:easy-android-splash-screen:0.0.1'
@@ -34,9 +35,11 @@ dependencies {
     compile 'com.android.support:design:25.3.0'
     compile 'com.android.support:support-v4:25.3.0'
     compile 'com.android.support:recyclerview-v7:25.3.0'
+    compile 'net.bohush.geometricprogressview:geometricprogressview:1.1.1'
     compile 'com.google.firebase:firebase-database:10.0.1'
     testCompile 'junit:junit:4.12'
 }
+
 
 
 apply plugin: 'com.google.gms.google-services'

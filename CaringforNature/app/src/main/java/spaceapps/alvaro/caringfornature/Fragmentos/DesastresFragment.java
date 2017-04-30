@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -43,7 +44,7 @@ public class DesastresFragment extends Fragment {
     private DatabaseReference databaseReference;
     private RecyclerView recyclerView;
     private MyDesastresRecyclerViewAdapter recyclerViewAdapter;
-
+    private LinearLayout l;
 
 
     /**
@@ -79,6 +80,8 @@ public class DesastresFragment extends Fragment {
             Desastre desastre = dataSnapshot.getValue(Desastre.class);
             Log.d("LOG_FIREBAS","Desastre traido desde DB"+desastre.getBrillo());
             listaDesastres.add(desastre);
+            l.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
             recyclerViewAdapter = new MyDesastresRecyclerViewAdapter(listaDesastres, mListener);
             recyclerView.setAdapter(recyclerViewAdapter);
     }
@@ -89,6 +92,7 @@ public class DesastresFragment extends Fragment {
 
 //        Obteniendo datos desde firebase
         listaDesastres = new ArrayList<>();
+
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -115,6 +119,8 @@ public class DesastresFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_desastres_list, container, false);
         recyclerView =(RecyclerView) view.findViewById(R.id.list);
+        l= (LinearLayout)view.findViewById(R.id.noMessages);
+
         configurarToolbar(view);
         // Set the adapter
         if (recyclerView != null) {

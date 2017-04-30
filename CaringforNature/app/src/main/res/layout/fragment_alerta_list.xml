@@ -10,7 +10,37 @@
         android:id="@+id/padre_toolbar_alertas"
         layout="@layout/toolbar_alertas"
         />
+    <LinearLayout
+        android:id="@+id/noMessages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+    <ImageView
+        android:id="@+id/noMessagesIcon"
+        android:layout_width="308dp"
+        android:layout_height="183dp"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:src="@drawable/tend"
+        />
+
+    <TextView
+        android:id="@+id/noMessagesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:text="No hay alertas activas. Puedes acampar en paz:)"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+    </LinearLayout>
     <android.support.v7.widget.RecyclerView
+        android:visibility="gone"
         android:id="@+id/list"
         android:name="spaceapps.alvaro.caringfornature.Fragmentos.AlertaFragment"
         android:layout_width="match_parent"
@@ -19,5 +49,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layoutManager="LinearLayoutManager"
         tools:context="spaceapps.alvaro.caringfornature.Fragmentos.AlertaFragment"
-        tools:listitem="@layout/fragment_alerta" />
+        tools:listitem="@layout/fragment_alerta" >
+    </android.support.v7.widget.RecyclerView>
+
 </android.support.design.widget.CoordinatorLayout>
