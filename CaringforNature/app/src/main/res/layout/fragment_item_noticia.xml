@@ -14,7 +14,7 @@
     android:orientation="horizontal">
 
     <!-- Image circular de la librería externa -->
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/avatar"
         android:layout_width="100dp"
         android:layout_height="100dp"
