@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_feed"
+        android:title="@string/menu_feed"
+        android:icon="@android:drawable/ic_dialog_alert"
+        />
+    <item
+        android:id="@+id/menu_desastres"
+        android:title="@string/menu_desastres"
+        android:icon="@android:drawable/ic_dialog_map"
+        />
+
+    <item
+        android:id="@+id/menu_perfil"
+        android:title="@string/menu_perfil"
+        android:icon="@drawable/ic_action_account_circle" />
+</menu>

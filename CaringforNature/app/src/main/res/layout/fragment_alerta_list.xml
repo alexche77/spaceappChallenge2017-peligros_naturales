@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <include
+        android:id="@+id/padre_toolbar_alertas"
+        layout="@layout/toolbar_alertas"
+        />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list"
+        android:name="spaceapps.alvaro.caringfornature.Fragmentos.AlertaFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="spaceapps.alvaro.caringfornature.Fragmentos.AlertaFragment"
+        tools:listitem="@layout/fragment_alerta" />
+</android.support.design.widget.CoordinatorLayout>

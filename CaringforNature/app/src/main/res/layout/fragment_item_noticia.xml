@@ -1,0 +1,49 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:padding="16dp"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="6dp"
+    android:elevation="10dp">
+<LinearLayout
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <!-- Image circular de la librería externa -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/avatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/noticia"
+        android:layout_marginRight="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!-- Nombre de la Noticia -->
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/titulo_noticia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textSize="20sp"
+            android:text="Titulo de la noticia"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Display3" />
+        <!-- Contenido -->
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/content"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/Lorem"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
+    </LinearLayout>
+</LinearLayout>
+
+</android.support.v7.widget.CardView>
