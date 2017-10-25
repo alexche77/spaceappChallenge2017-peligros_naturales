@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2196F3</color>
-    <color name="colorPrimaryDark">#1976D2</color>
-    <color name="colorAccent">#009688</color>
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#D32F2F</color>
+    <color name="colorAccent">#FFC107</color>
     <color name="primary_text">#FFFF</color>
     <color name="secondary_text">#757575</color>
     <color name="gris">#CCCCCC</color>
@@ -10,7 +10,7 @@
     <color name="divider">#BDBDBD</color>
 
     <!--BottomNavBar-->
-    <color name="colorBackground">#2196F3</color>
+    <color name="colorBackground">#D32F2F</color>
     <color name="colorNavAccentSelected">#FFFFFF</color>
     <color name="colorNavAccentUnselected">#FFFFFF</color>
 </resources>

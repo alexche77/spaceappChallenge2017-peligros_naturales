@@ -41,7 +41,7 @@ public class MyDesastresRecyclerViewAdapter extends RecyclerView.Adapter<MyDesas
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         String fechaDesastre = "Fecha: "+mValues.get(position).getFecha_obtenido()+" Hora:"+mValues.get(position).getHora_obtenido();
-        String cadenaCoordenadas= "Longitud: "+mValues.get(position).getLatitud()+" Latitud:"+mValues.get(position).getLongitud();
+        String cadenaCoordenadas= mValues.get(position).getDireccion();
         holder.mIdView.setText(fechaDesastre);
         holder.mContentView.setText(cadenaCoordenadas);
 

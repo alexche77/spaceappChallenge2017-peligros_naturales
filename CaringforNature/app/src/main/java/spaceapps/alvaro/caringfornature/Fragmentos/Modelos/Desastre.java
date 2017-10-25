@@ -10,33 +10,18 @@ public class Desastre {
     /**
      * Un incendio en nuestra estructura de firebase tiene esta estructura
      *
-     "-KixGMwTKBEUWrQVWt1g" : {
-         "brillo" : 331.6,
-         "confianza" : " nominal",
-         "dia_noche" : "D ",
-         "fecha_obtenido" : "2017-04-28",
-         "hora_obtenido" : "19:18",
-         "latitud" : 13.59873,
-         "longitud" : -86.00985,
-         "satelite" : "Suomi-National Polar-orbiting Partnership (SNPP)",
-         "usuarios_afectados" : {
-                    "1":true,
-                    "2":true
-            }
-     }
+     dia_noche:"D"
+     direccion:"Departamento de Jinotega, Nicaragua"
+     fecha_obtenido:"2017-10-23"
+     hora_obtenido: "18:42"
+     latitud: "13.93322"
+     longitud:"-85.71487"
+
      */
 
-    private String confianza,dia_noche,fecha_obtenido,hora_obtenido,satelite;
-    private float latitud,longitud,brillo;
-    private List<Integer> usuarios;
+    private String dia_noche,fecha_obtenido,hora_obtenido,latitud,longitud, direccion;
 
-    public String getConfianza() {
-        return confianza;
-    }
 
-    public void setConfianza(String confianza) {
-        this.confianza = confianza;
-    }
 
     public String getDia_noche() {
         return dia_noche;
@@ -62,43 +47,28 @@ public class Desastre {
         this.hora_obtenido = hora_obtenido;
     }
 
-    public String getSatelite() {
-        return satelite;
-    }
 
-    public void setSatelite(String satelite) {
-        this.satelite = satelite;
-    }
-
-    public float getLatitud() {
+    public String getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(float latitud) {
+    public void setLatitud(String latitud) {
         this.latitud = latitud;
     }
 
-    public float getLongitud() {
+    public String getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(float longitud) {
+    public void setLongitud(String longitud) {
         this.longitud = longitud;
     }
 
-    public float getBrillo() {
-        return brillo;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setBrillo(float brillo) {
-        this.brillo = brillo;
-    }
-
-    public List<Integer> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(List<Integer> usuarios) {
-        this.usuarios = usuarios;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }

@@ -60,7 +60,7 @@ public class MainActivity extends BottomBarHolderActivity implements Perfil.OnFr
         // four navigation pages that would be displayed as four tabs
         // contains title, icon and fragment instance
         NavigationPage page1 = new NavigationPage("Alertas", ContextCompat.getDrawable(this, R.drawable.ic_alertas), AlertaFragment.newInstance(1));
-        NavigationPage page2 = new NavigationPage("Siniestros", ContextCompat.getDrawable(this, R.drawable.ic_siniestros), DesastresFragment.newInstance(1));
+        NavigationPage page2 = new NavigationPage("Siniestros", ContextCompat.getDrawable(this, R.drawable.ic_siniestros), DesastresFragment.newInstance());
         NavigationPage page3 = new NavigationPage("Profile", ContextCompat.getDrawable(this, R.drawable.ic_perfil), Perfil.newInstance("",""));
         NavigationPage noticias = new NavigationPage("Noticias", ContextCompat.getDrawable(this, R.drawable.ic_noticias), NoticiasFragment.newInstance(1));
         // add them in a list

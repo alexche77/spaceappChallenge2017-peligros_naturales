@@ -3,7 +3,6 @@ package spaceapps.alvaro.caringfornature.Fragmentos;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -14,19 +13,17 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.firebase.database.ChildEventListener;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import spaceapps.alvaro.caringfornature.Fragmentos.Modelos.Desastre;
 import spaceapps.alvaro.caringfornature.R;
-import spaceapps.alvaro.caringfornature.Fragmentos.dummy.DummyContent;
-import spaceapps.alvaro.caringfornature.Fragmentos.dummy.DummyContent.DummyItem;
 import universum.studios.android.font.Font;
 
-import java.util.ArrayList;
 /**
  * A fragment representing a list of Items.
  * <p/>
@@ -35,103 +32,86 @@ import java.util.ArrayList;
  */
 public class DesastresFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
-    private int mColumnCount = 1;
+
+    private FirebaseRecyclerAdapter<Desastre, ViewHolder> adapter;
+
     private OnListFragmentInteractionListener mListener;
-    private ArrayList<Desastre> listaDesastres;
-    private DatabaseReference databaseReference;
-    private RecyclerView recyclerView;
-    private MyDesastresRecyclerViewAdapter recyclerViewAdapter;
     private LinearLayout l;
+    private RecyclerView recyclerView;
 
-
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public DesastresFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static DesastresFragment newInstance(int columnCount) {
-        DesastresFragment fragment = new DesastresFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
-        return fragment;
+    public static DesastresFragment newInstance() {
+        return  new DesastresFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        databaseReference = FirebaseDatabase.getInstance().getReference("incendios");
-    }
-
-    private void borrarItem(DataSnapshot dataSnapshot) {
-
-    }
-
-    private void obtenerDesastres(DataSnapshot dataSnapshot) {
-
-
-            Desastre desastre = dataSnapshot.getValue(Desastre.class);
-            Log.d("LOG_FIREBAS","Desastre traido desde DB"+desastre.getBrillo());
-            listaDesastres.add(desastre);
-            l.setVisibility(View.GONE);
-            recyclerView.setVisibility(View.VISIBLE);
-            recyclerViewAdapter = new MyDesastresRecyclerViewAdapter(listaDesastres, mListener);
-            recyclerView.setAdapter(recyclerViewAdapter);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        View view = inflater.inflate(R.layout.fragment_desastres_list, container, false);
 //        Obteniendo datos desde firebase
-        listaDesastres = new ArrayList<>();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("incendios");
 
-        if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+        databaseReference.keepSynced(true);
+
+        Log.d("REF", "R: "+ databaseReference.toString());
+
+        l = (LinearLayout) view.findViewById(R.id.noMessages);
+
+
+        Context context = view.getContext();
+
+
+        l.setVisibility(View.VISIBLE);
+        adapter = new FirebaseRecyclerAdapter<Desastre, ViewHolder>(
+                Desastre.class,
+                R.layout.fragment_desastres,
+                ViewHolder.class,
+                databaseReference) {
+            @Override
+            public void populateViewHolder(ViewHolder holder, Desastre model, int position) {
+                Log.d("Elemento","Fuego->"+model.getDireccion());
+                String fechaDesastre = "Fecha: "+model.getFecha_obtenido()+" Hora:"+model.getHora_obtenido();
+                String cadenaCoordenadas=model.getDireccion();
+                holder.mIdView.setText(fechaDesastre);
+                holder.mContentView.setText(cadenaCoordenadas);
+            }
+        };
+        configurarToolbar(view);
+        recyclerView = (RecyclerView) view.findViewById(R.id.listaIncendios);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        if (adapter.getItemCount()>0){
+
+            recyclerView.setAdapter(adapter);
+            l.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
         }
-        databaseReference.addChildEventListener(new ChildEventListener() {
+        else{
+            l.setVisibility(View.VISIBLE);
+        }
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                obtenerDesastres(dataSnapshot);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                l.setVisibility(View.GONE);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setVisibility(View.VISIBLE);
             }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                obtenerDesastres(dataSnapshot);
-            }
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                borrarItem(dataSnapshot);
-            }
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-            }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
+
             }
         });
 
-        View view = inflater.inflate(R.layout.fragment_desastres_list, container, false);
-        recyclerView =(RecyclerView) view.findViewById(R.id.list);
-        l= (LinearLayout)view.findViewById(R.id.noMessages);
-
-        configurarToolbar(view);
-        // Set the adapter
-        if (recyclerView != null) {
-            Context context = view.getContext();
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(recyclerViewAdapter);
-        }
         return view;
     }
 
@@ -159,8 +139,14 @@ public class DesastresFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
 
+        adapter.cleanup();
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -175,4 +161,23 @@ public class DesastresFragment extends Fragment {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Desastre item);
     }
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        final View mView;
+        final TextView mIdView;
+        final TextView mContentView;
+        public Desastre mItem;
+
+        public ViewHolder(View view) {
+            super(view);
+            mView = view;
+            mIdView = (TextView) view.findViewById(R.id.fecha_desastre);
+            mContentView = (TextView) view.findViewById(R.id.content);
+        }
+
+        @Override
+        public String toString() {
+            return super.toString() + " '" + mContentView.getText() + "'";
+        }
+    }
 }
+

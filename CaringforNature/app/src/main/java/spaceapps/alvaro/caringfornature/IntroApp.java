@@ -19,9 +19,9 @@ public class IntroApp extends AppIntro2 {
 
         // Instead of fragments, you can also use our default slide
         // Just set a title, description, background and image. AppIntro will do the rest.
-        addSlide(AppIntroFragment.newInstance("Bienvenido", "Peligros Naturales", R.drawable.logo_app, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
-        addSlide(AppIntroFragment.newInstance("Monitorea", "Mantente al tanto de los peligros naturales con reportes basados en escaneos satelitales de la NASA", R.drawable.logo_app, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
-        addSlide(AppIntroFragment.newInstance("Reporta", "Si llegas a ser afectado por uno de estos desastres, hazlo saber para alertar a los que esten cerca del siniestro!", R.drawable.logo_app, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
+        addSlide(AppIntroFragment.newInstance("Firewatch","", R.drawable.fire, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
+        addSlide(AppIntroFragment.newInstance("Monitorea", "Mantente al tanto de las altas temperaturas, con reportes basados en escaneos satelitales de la NASA", R.drawable.noticia, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
+        addSlide(AppIntroFragment.newInstance("Ten cuidado", "¡Las altas temperaturas pueden provocar incendios en lugares con poca humedad!", R.drawable.zonas_protegidas, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
 
         // OPTIONAL METHODS
         // Override bar/separator color.

@@ -40,7 +40,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/list"
+        android:id="@+id/listaIncendios"
         android:visibility="gone"
         android:name="spaceapps.alvaro.caringfornature.Fragmentos.DesastresFragment"
         android:layout_width="match_parent"

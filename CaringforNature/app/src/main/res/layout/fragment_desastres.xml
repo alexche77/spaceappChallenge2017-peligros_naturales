@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
                 android:textSize="20sp"
-                android:text="Coordenadas:"
+                android:text="Direccion:"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Display3" />
             <!-- Coordenadas -->
             <TextView xmlns:android="http://schemas.android.com/apk/res/android"
